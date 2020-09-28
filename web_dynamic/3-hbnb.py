@@ -5,7 +5,6 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
-from flask_cors import CORS
 from os import environ
 from flask import Flask, render_template
 import uuid
@@ -21,7 +20,7 @@ def close_db(error):
     storage.close()
 
 
-@app.route('/2-hbnb', strict_slashes=False)
+@app.route('/3-hbnb', strict_slashes=False)
 def hbnb():
     """ HBNB is alive! """
     states = storage.all(State).values()
@@ -38,7 +37,7 @@ def hbnb():
     places = sorted(places, key=lambda k: k.name)
     cache_id = str(uuid.uuid4())
 
-    return render_template('2-hbnb.html',
+    return render_template('3-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
                            places=places,
